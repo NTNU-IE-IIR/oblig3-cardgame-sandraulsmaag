@@ -2,17 +2,20 @@ package no.ntnu.idatx2003.oblig3.cardgame.model;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import javafx.scene.control.TextField;
 
 
-  /**
+/**
    * Represents a hand of playingcards.
    *
    * @author Sandra Lundvang Ulsmåg
    * @version 2024-03-10
    */
   public class HandOfCards {
-    private ArrayList<PlayingCard> handOfCards;
+    public ArrayList<PlayingCard> handOfCards;
 
+    private TextField cardView;
 
 
   public  ArrayList<PlayingCard> getHandOfCards() {
@@ -101,6 +104,9 @@ import java.util.Iterator;
       }
       return false;
     }
+
+
+
 
 
 

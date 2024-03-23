@@ -1,9 +1,16 @@
 package no.ntnu.idatx2003.oblig3.cardgame.ui;
-import javafx.application.Application;
-import no.ntnu.idatx2003.oblig3.cardgame.model.DeckOfCards;
-import no.ntnu.idatx2003.oblig3.cardgame.model.HandOfCards;
-import no.ntnu.idatx2003.oblig3.cardgame.model.PlayingCard;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
+import  no.ntnu.idatx2003.oblig3.cardgame.model.DeckOfCards;
+import  no.ntnu.idatx2003.oblig3.cardgame.model.HandOfCards;
+import  no.ntnu.idatx2003.oblig3.cardgame.model.PlayingCard;
 
+
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.scene.control.TableColumn;
+
+import javafx.scene.control.TableView;
 import javafx.scene.control.Label;
 import javafx.geometry.Pos;
 import javafx.scene.layout.BorderPane;
@@ -23,7 +30,7 @@ import java.util.ArrayList;
     private ArrayList<PlayingCard> handOfCardsList;
     private String text = "";
 
-
+    private TextField cardView;
 
 
 
@@ -35,53 +42,66 @@ import java.util.ArrayList;
     @Override
     public void start(Stage stage) {
 
+      DeckOfCards deck = new DeckOfCards();
+      HandOfCards handOfCards = new HandOfCards();
+      DealHand dealHand = new DealHand();
+
       // Set the title of the window
-    stage.setTitle("Card Game Application");
+      stage.setTitle("Card Game Application");
+
+      // Opprett en instans av HandOfCards
+      handOfCards = new HandOfCards();
+
+      // Sentralt layout
+
+      VBox centerBox = new VBox();
+      centerBox.setAlignment(Pos.CENTER);
+      centerBox.setSpacing(10);
+
+      Label handLabel = new Label("Hand of Cards:");
+
+      centerBox.getChildren().add(handLabel);
 
 
-    // Create a new deck of cards
-      // Opprett to knapper
+
+
+
+
+
+
+
+
+
+
+
+      //Vestre siden
       Button button1 = new Button("Ny utdeling");
       Button button2 = new Button("Trekk kort");
+      HandOfCards finalHandOfCards1 = handOfCards;
+      button1.setOnAction(event -> finalHandOfCards1.cleanHand());
+      HandOfCards finalHandOfCards = handOfCards;
+      button2.setOnAction(event -> {
+        handLabel.setText("Hand of Cards: " + finalHandOfCards.getHandOfCards());
+      });
 
-      button1.setOnAction(event -> deck.reset());
 
-
-      // Opprett en VBox for knappene
-      VBox buttonBox = new VBox(10); // 10 er gapet mellom knappene
+      VBox buttonBox = new VBox(10);
       buttonBox.getChildren().addAll(button1, button2);
-      buttonBox.setAlignment(Pos.CENTER); // Sentrer knappene vertikalt
+      buttonBox.setAlignment(Pos.CENTER);
 
-      // Opprett en BorderPane som hovedlayout
       BorderPane layout = new BorderPane();
-
-      // Plasser VBoxen med knappene til høyre i BorderPane
       layout.setRight(buttonBox);
+      layout.setCenter(centerBox);
 
-        // Opprett en Scene
+
+
+      // Opprett en Scene
       Scene scene = new Scene(layout, 400, 300);
-
-
-
-
-
-      //Viser kortene
-      // Oppdater handLabel når handOfCards endres
-      Label handLabel = new Label("Hand of Cards:" + handOfCardsList);
-
-
-      // Opprett en VBox for å plassere handLabel og andre GUI-elementer vertikalt
-      VBox lefttBox = new VBox();
-      lefttBox.setSpacing(10);
-      lefttBox.setPadding(new Insets(10));
-      lefttBox.getChildren().add(handLabel);
 
       // Set the scene to the stage
       stage.setScene(scene);
-
-
       stage.show();
-      }
+    }
 
 
 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="no.ntnu.idatx2003.oblig3.cardgame.ui.CardGameApp">
+    <children>
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+            <children>
+                <Button id="dealHand" onAction="#dealHandAction" layoutX="335.0" layoutY="51.0" mnemonicParsing="false" text="Deal hand" />
+                <Spinner fx:id="numberOfCards" layoutX="152.0" layoutY="51.0">
+                    <valueFactory>
+                        <SpinnerValueFactory.IntegerSpinnerValueFactory max="52" min="5"/>
+                    </valueFactory>
+                </Spinner>
+                <Label layoutX="331.0" layoutY="330.0" prefHeight="17.0" prefWidth="95.0" text="Queen of spades" />
+                <TextField fx:id="fieldQueenOfSpades" layoutX="434.0" layoutY="326.0" prefHeight="25.0" prefWidth="45.0" />
+                <Label layoutX="162.0" layoutY="330.0" text="Sum of faces:" />
+                <TextField fx:id="fieldSumOfFaces" layoutX="247.0" layoutY="326.0" prefHeight="25.0" prefWidth="45.0" />
+
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>

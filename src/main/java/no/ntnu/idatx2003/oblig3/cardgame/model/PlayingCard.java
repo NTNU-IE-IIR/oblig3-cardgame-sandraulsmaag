@@ -10,8 +10,8 @@ package no.ntnu.idatx2003.oblig3.cardgame.model;
  */
 public class PlayingCard {
 
-  private final char suit; // 'S'=spade, 'H'=heart, 'D'=diamonds, 'C'=clubs
-  private final int face; // a number between 1 and 13
+  public final char suit; // 'S'=spade, 'H'=heart, 'D'=diamonds, 'C'=clubs
+  public final int face; // a number between 1 and 13
 
   /**
    * Creates an instance of a PlayingCard with a given suit and face.

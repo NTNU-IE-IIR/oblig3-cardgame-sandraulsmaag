@@ -1,4 +1,6 @@
-package no.ntnu.idatx2003.oblig3.cardgame;
+package no.ntnu.idatx2003.oblig3.cardgame.model;
+
+
 
 import javafx.scene.text.Text;
 import javafx.scene.control.TextField;
@@ -25,9 +27,11 @@ import java.util.ArrayList;
 
   public class CardGameApp extends Application {
 
-    private TextField nameTextField;
-    private TextField gradeTextField;
-    private VBox studentList;
+
+
+
+
+
 
 
     @Override
@@ -63,14 +67,14 @@ import java.util.ArrayList;
 
       Label checkForFlush = new Label();
       Label checkTheTotalSum = new Label();
-      Label checkQueenOfSpades = new Label(); // Endret fra 'chechQueenOfHarts'
+      Label checkQueenOfSpades = new Label();
 
-      // Sett initialverdier for etikettene (kan være tomme eller forhåndsdefinerte verdier)
-      checkForFlush.setText("Do you have a flush?" );
-      checkTheTotalSum.setText("The total sum of the faces is:" );
-      checkQueenOfSpades.setText("Do you have the Queen of spades?: " );
+    
+      checkForFlush.setText("Do you have a flush?" + getFlushMessage());
+      checkTheTotalSum.setText("The total sum of the faces is:" + getSumOfCardsValue());
+      checkQueenOfSpades.setText("Do you have the Queen of spades?:" + getQueenOfSpadesMessage);
 
-      // Legg til etikettene til buttonPane
+
       buttonPane.getChildren().addAll(checkForFlush, checkQueenOfSpades,checkTheTotalSum);;
 
 
@@ -84,12 +88,11 @@ import java.util.ArrayList;
       Button dealHandButton = new Button("Deal Hand");
       Button newHandButton = new Button("New Hand");
 
-      // Legg til hendelseslyttere for knappene om nødvendig
-      // For eksempel:
-     // dealHandButton.setOnAction(e -> dealHand());
-     // newHandButton.setOnAction(e -> newHand());
 
-      // Legg til knappene i rightPane
+     dealHandButton.setOnAction(e -> dealHand());
+     newHandButton.setOnAction(e -> newHand());
+
+
       rightPane.getChildren().addAll(dealHandButton, newHandButton);
 
       rightPane.setPadding(new Insets(10));
@@ -101,10 +104,10 @@ import java.util.ArrayList;
       centerPane.setAlignment(Pos.CENTER);
 
 
-     // for (PlayingCard card : handOfCards) {
-       // Text cardOnHandText = new Text(card.getAsString());
-       // centerPane.getChildren().add(cardOnHandText);
-      //}
+     for (PlayingCard card : handOfCards) {
+       Text cardOnHandText = new Text(card.getAsString());
+       centerPane.getChildren().add(cardOnHandText);
+      }
 
       return centerPane;
     }

@@ -20,23 +20,21 @@ public class HandOfCards {
    * Creates an instance of HandOfCards.
    */
   public HandOfCards() {
-    this.handOfCards = new ArrayList<>();
+    this.handOfCards = new ArrayList<PlayingCard>();
   }
 
   public ArrayList<PlayingCard> getHandOfCards() {
     return handOfCards;
   }
 
-  /**
-   * Display the cards on hand.
-   */
-  public void displayHandOfCards() {
-    String cardsOnHand = "";
-    for (PlayingCard card : this.handOfCards) {
-      cardsOnHand += card.getAsString() + " ";
-    }
-    this.cardView.setText(cardsOnHand);
-  }
+
+ // public void displayHandOfCards() {
+  //  String cardsOnHand = "";
+  //  for (PlayingCard card : this.handOfCards) {
+   //   cardsOnHand += card.getAsString() + " ";
+  //  }
+  //  this.cardView.setText(cardsOnHand);
+ // }
 
   /**
    * Add all the cards that are dealt to the hand.
@@ -87,6 +85,19 @@ public class HandOfCards {
    */
   public boolean hasQueenOfSpades() {
     return this.handOfCards.stream().anyMatch(card -> card.getAsString().equals("S12"));
+  }
+
+  /**
+   * Returns a message to the user if the hand contains the queen of spades or not.
+   * @param hasQueenOfSpades
+   * @return
+   */
+  public String getQueenOfSpadesMessage(boolean hasQueenOfSpades) {
+    if (hasQueenOfSpades) {
+      return "Du har dronningen av spar!";
+    } else {
+      return "Ingen dronning av spar denne gangen:(";
+    }
   }
 
   public boolean checkForFlush(int typeOfFlush) {

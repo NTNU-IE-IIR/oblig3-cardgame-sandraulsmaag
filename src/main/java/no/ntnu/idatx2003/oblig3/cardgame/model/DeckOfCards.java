@@ -56,12 +56,12 @@ public class DeckOfCards {
    * @return collection that represents a hand of playing cards
    */
   public List<PlayingCard> dealHand(int numberOfCards){
-    ArrayList<PlayingCard> dealtCards = new ArrayList<>();
+    ArrayList<PlayingCard> handOfCards = new ArrayList<>();
     for(int i=0; i<numberOfCards; i++){
       PlayingCard card = this.cardDeck.remove(this.random.nextInt(this.cardDeck.size()));
-      dealtCards.add(card);
+      handOfCards.add(card);
     }
-    return dealtCards;
+    return handOfCards;
   }
 
 
